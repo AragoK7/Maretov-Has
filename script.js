@@ -10,6 +10,8 @@ document.querySelectorAll("h2").forEach((sectionTitle) => {
 });
 // let a, b, c, d, e, f;
 let rgbArray;
+let bw;
+let bw6;
 const textNapitki = "napitki";
 const textGlavnoJelo = "glavno-jelo";
 const textBrekfest = "brekfest";
@@ -221,12 +223,15 @@ const rC = () => Math.floor(Math.random() * 256);
 
 const pixelChange = function () {
   rgbArray.forEach((num, i) => {
-    if (num >= 4 && num <= 251) {
-      Math.random() < 0.5 ? (rgbArray[i] -= 4) : (rgbArray[i] += 4);
-    } else if (num <= 3) rgbArray[i] += 4;
-    else rgbArray[i] -= 4;
+    if (num >= 5 && num <= 250) {
+      Math.random() < 0.5 ? (rgbArray[i] -= 5) : (rgbArray[i] += 5);
+    } else if (num <= 4) rgbArray[i] += 5;
+    else rgbArray[i] -= 5;
   });
-  console.log(rgbArray);
   body.style.backgroundImage = `linear-gradient(to bottom right, rgb(${rgbArray[0]},${rgbArray[1]},${rgbArray[2]}), rgb(${rgbArray[3]},${rgbArray[4]},${rgbArray[5]}))`;
+  bw = rgbArray.reduce((acc, num) => (acc += num), 0);
+  bw6 = bw / 6;
+  body.style.color = bw6 > 112 ? "black" : bw6 < 100 ? "rgb(192,192,192)" : {};
+  console.log(bw / 6);
 };
-setInterval(pixelChange, 100);
+setInterval(pixelChange, 200);
