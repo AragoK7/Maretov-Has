@@ -1,11 +1,11 @@
 body {
-  background-image: linear-gradient(to bottom right, red, yellow);
-  height: 1200px;
+  background-image: linear-gradient(to bottom right, rgb(255, 0, 0), blue);
   min-width: 600px;
   margin: 0;
   border: 0;
   padding: 0;
 }
+
 main {
   text-align: center;
 }
@@ -17,6 +17,9 @@ article span {
   overflow: hidden;
   font-size: 1rem;
 }
+.blin {
+  min-width: fit-content;
+}
 .title {
   font-family: cursive;
   font-size: 6rem;
@@ -26,6 +29,7 @@ article span {
 article {
   font-size: 0;
   text-align: justify;
+  white-space: nowrap;
 }
 .container {
   width: 800px;
@@ -41,7 +45,8 @@ article {
   border: 4px solid gray;
   border-radius: 3px;
   font-size: 2rem;
-  margin-top: 16px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 button:hover {
   background-color: gray;
@@ -79,7 +84,11 @@ button:hover {
   font-size: 28px;
   font-weight: bold;
 }
-
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
 .close:hover,
 .close:focus {
   color: black;
@@ -90,4 +99,38 @@ section p {
   display: inline-block;
   margin: 0;
   font-size: 1rem;
+}
+@media all and (max-width: 832px) {
+  body {
+    min-width: 400px;
+    background-image: none;
+    background-color: white;
+  }
+  article span {
+    font-size: 1rem;
+  }
+  .container {
+    width: 400px;
+  }
+  .title {
+    font-size: 4rem;
+  }
+  article span {
+    font-size: 1rem;
+  }
+}
+@media all and (max-width: 512px) {
+  body {
+    min-width: 256px;
+    background-color: white;
+  }
+  article span {
+    font-size: 0.5rem;
+  }
+  .container {
+    width: 256px;
+  }
+  .title {
+    font-size: 4rem;
+  }
 }

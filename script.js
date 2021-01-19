@@ -4,7 +4,6 @@ document.querySelectorAll("h2").forEach((sectionTitle) => {
     .toLowerCase()
     .trim()
     .replace(" ", "-");
-  console.log(text);
   sectionTitle.classList.add(`section--title`);
   sectionTitle.closest("section").classList.add(`section--${text}`);
 });
@@ -175,6 +174,14 @@ btnConfirm.addEventListener("click", function () {
     displayCreatedHas(tip, ime, cena);
     clearModalValuesExit();
     modal.style.display = "none";
+    const rand = Math.random();
+    const aud = [
+      new Audio("dik.mp3"),
+      new Audio("san.mp3"),
+      new Audio("bolz.mp3"),
+    ];
+    aud.forEach((audio) => (audio.volume = 0.2));
+    rand < 0.33 ? aud[0].play() : rand < 0.67 ? aud[1].play() : aud[2].play();
   }
 });
 
@@ -184,21 +191,12 @@ const displayCreatedHas = function (tip, ime, cena) {
   const section = document.querySelector(`.section--${tip}`);
   const article = document.createElement("article");
 
-  article.innerHTML = `<span class="t${madeobjects}1">${ime}</span>
-   <span class="t${madeobjects}2"></span>
-   <span class="t${madeobjects}3">${cena + ",00 RSD"}</span>`;
+  article.classList.add("flex-container");
+  article.innerHTML = `<span class="blin t${madeobjects}1">${ime}</span>
+   <span class="t${madeobjects}2">...............................................................................................................................................................................................................................................</span>
+   <span class="blin t${madeobjects}3">${cena + ",00 RSD"}</span>`;
   section.after(article);
 
-  const imeW = document.querySelector(`.t${madeobjects}1`).offsetWidth;
-  const cenaW = document.querySelector(`.t${madeobjects}3`).offsetWidth;
-  const fillerW = sectionWidth - (imeW + cenaW) - 1;
-  let filler = document.querySelector(`.t${madeobjects}2`);
-
-  document.querySelector(`.t${madeobjects}2`).style.maxWidth = fillerW + "px";
-
-  do {
-    filler.textContent += ".";
-  } while (fillerW > filler.offsetWidth);
   madeobjects++;
 };
 
@@ -223,15 +221,14 @@ const rC = () => Math.floor(Math.random() * 256);
 
 const pixelChange = function () {
   rgbArray.forEach((num, i) => {
-    if (num >= 5 && num <= 250) {
-      Math.random() < 0.5 ? (rgbArray[i] -= 5) : (rgbArray[i] += 5);
-    } else if (num <= 4) rgbArray[i] += 5;
-    else rgbArray[i] -= 5;
+    if (num >= 1 && num <= 254) {
+      Math.random() < 0.5 ? (rgbArray[i] -= 2) : (rgbArray[i] += 2);
+    } else if (num <= 1) rgbArray[i] += 2;
+    else rgbArray[i] -= 2;
   });
   body.style.backgroundImage = `linear-gradient(to bottom right, rgb(${rgbArray[0]},${rgbArray[1]},${rgbArray[2]}), rgb(${rgbArray[3]},${rgbArray[4]},${rgbArray[5]}))`;
   bw = rgbArray.reduce((acc, num) => (acc += num), 0);
   bw6 = bw / 6;
   body.style.color = bw6 > 112 ? "black" : bw6 < 100 ? "rgb(192,192,192)" : {};
-  console.log(bw / 6);
 };
-setInterval(pixelChange, 200);
+setInterval(pixelChange, 50);
