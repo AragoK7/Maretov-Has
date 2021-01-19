@@ -11,41 +11,53 @@
       <section class="main_title">
         <h1 class="title">Maretov Has</h1>
       </section>
-    </section>
-    <section>
-      <h2>Napitki</h2>
-    </section>
       <section>
-        <h2>Dorucak</h2>
+        <h2>Napitki</h2>
       </section>
       <section>
-        <h2>Rucak</h2>
+        <h2>Brekfest</h2>
       </section>
       <section>
-        <h2>Vecera</h2>
+        <h2>Glavno Jelo</h2>
       </section>
       <section>
         <h2>Dezert</h2>
+      </section>
       <button class="create__has">Create new Has</button>
-      <br/>
+      <br />
       <!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <button class="btn--close-modal"><span>&times;</span></button>
-    <h3>Upiši ime jela i cenu</h3>
-    <br>
-    <input type="text" name="" class="modal-tip" placeholder="Vrsta">
-    <br>
-    <input type="text" name="" class="modal-ime" placeholder="Ime hasa">
-    <br>
-    <input type="text" name="" class="modal-cena" placeholder="Cena hasa">
-    <br>
-    <button class="btn-confirm">Ubaci u jelovnik hasova</button>
-  </div>
-
-</div>
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <button class="btn--close-modal"><span>&times;</span></button>
+          <h3>Upiši ime jela i cenu</h3>
+          <br />
+          <input
+            type="text"
+            name=""
+            class="modal-tip"
+            placeholder="Vrsta(napitki,brekfest,glavno-jelo, dezert)"
+          />
+          <br />
+          <input
+            type="text"
+            name=""
+            class="modal-ime"
+            placeholder="Ime hasa(30 karaktera)"
+          />
+          <br />
+          <input
+            type="number"
+            name=""
+            class="modal-cena"
+            placeholder="Cena hasa(1-5000)"
+          />
+          <br />
+          <button type="submit" class="btn-confirm">
+            Ubaci u jelovnik hasova
+          </button>
+        </div>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>

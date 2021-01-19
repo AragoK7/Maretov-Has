@@ -1,6 +1,6 @@
 body {
   background-image: linear-gradient(to bottom right, red, yellow);
-  height: 2000px;
+  height: 1200px;
   min-width: 600px;
   margin: 0;
   border: 0;
@@ -15,11 +15,12 @@ article span {
   margin: 0 0 5px 0;
   padding: 0;
   overflow: hidden;
-  font-size: 3rem;
+  font-size: 1rem;
 }
 .title {
   font-family: cursive;
-  font-size: 5rem;
+  font-size: 6rem;
+  margin-top: 0;
   margin-bottom: 0;
 }
 article {
@@ -31,7 +32,8 @@ article {
   margin: 0 auto;
 }
 .section--title {
-  font-size: 2rem;
+  font-size: 3rem;
+  margin: 10px auto;
 }
 .create__has {
   background-color: black;
@@ -67,7 +69,9 @@ button:hover {
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
-
+.modal-content input {
+  width: 300px;
+}
 /* The Close Button */
 .close {
   color: #aaa;
