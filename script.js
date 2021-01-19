@@ -8,7 +8,8 @@ document.querySelectorAll("h2").forEach((sectionTitle) => {
   sectionTitle.classList.add(`section--title`);
   sectionTitle.closest("section").classList.add(`section--${text}`);
 });
-let a, b, c, d, e, f;
+// let a, b, c, d, e, f;
+let rgbArray;
 const textNapitki = "napitki";
 const textGlavnoJelo = "glavno-jelo";
 const textBrekfest = "brekfest";
@@ -138,6 +139,7 @@ const btnCreateHas = document.querySelector(".create__has");
 const modal = document.querySelector("#myModal");
 const closeModal = document.querySelector(".btn--close-modal");
 const btnConfirm = document.querySelector(".btn-confirm");
+const body = document.querySelector("body");
 let madeobjects = 0;
 
 // Event handlera
@@ -213,11 +215,18 @@ const clearModalValuesExit = function () {
 const rC = () => Math.floor(Math.random() * 256);
 //Random color on load
 (function () {
-  [a, b, c, d, e, f] = [rC(), rC(), rC(), rC(), rC(), rC()];
-  document.querySelector(
-    "body"
-  ).style.backgroundImage = `linear-gradient(to bottom right, rgb(${a},${b},${c}), rgb(${d},${e},${f}))`;
+  rgbArray = [rC(), rC(), rC(), rC(), rC(), rC()];
+  body.style.backgroundImage = `linear-gradient(to bottom right, rgb(${rgbArray[0]},${rgbArray[1]},${rgbArray[2]}), rgb(${rgbArray[3]},${rgbArray[4]},${rgbArray[5]}))`;
 })();
-setInterval(function () {
-  Math.random;
-});
+
+const pixelChange = function () {
+  rgbArray.forEach((num, i) => {
+    if (num >= 4 && num <= 251) {
+      Math.random() < 0.5 ? (rgbArray[i] -= 4) : (rgbArray[i] += 4);
+    } else if (num <= 3) rgbArray[i] += 4;
+    else rgbArray[i] -= 4;
+  });
+  console.log(rgbArray);
+  body.style.backgroundImage = `linear-gradient(to bottom right, rgb(${rgbArray[0]},${rgbArray[1]},${rgbArray[2]}), rgb(${rgbArray[3]},${rgbArray[4]},${rgbArray[5]}))`;
+};
+setInterval(pixelChange, 100);
