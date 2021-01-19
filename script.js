@@ -11,6 +11,7 @@ document.querySelectorAll("h2").forEach((sectionTitle) => {
 let rgbArray;
 let bw;
 let bw6;
+const aud = [new Audio("dik.mp3"), new Audio("san.mp3"), new Audio("bolz.mp3")];
 const textNapitki = "napitki";
 const textGlavnoJelo = "glavno-jelo";
 const textBrekfest = "brekfest";
@@ -140,6 +141,7 @@ const btnCreateHas = document.querySelector(".create__has");
 const modal = document.querySelector("#myModal");
 const closeModal = document.querySelector(".btn--close-modal");
 const btnConfirm = document.querySelector(".btn-confirm");
+const btnConfirmNonsense = document.querySelector(".btn-confirm-nonsense");
 const body = document.querySelector("body");
 let madeobjects = 0;
 
@@ -174,15 +176,13 @@ btnConfirm.addEventListener("click", function () {
     displayCreatedHas(tip, ime, cena);
     clearModalValuesExit();
     modal.style.display = "none";
-    const rand = Math.random();
-    const aud = [
-      new Audio("dik.mp3"),
-      new Audio("san.mp3"),
-      new Audio("bolz.mp3"),
-    ];
-    aud.forEach((audio) => (audio.volume = 0.2));
-    rand < 0.33 ? aud[0].play() : rand < 0.67 ? aud[1].play() : aud[2].play();
   }
+});
+btnConfirmNonsense.addEventListener("click", function () {
+  displayCreatedHas("napitki", "AragoK", Math.floor(Math.random() * 5000));
+  clearModalValuesExit();
+  modal.style.display = "none";
+  playAudio();
 });
 
 // Functions
@@ -231,4 +231,11 @@ const pixelChange = function () {
   bw6 = bw / 6;
   body.style.color = bw6 > 112 ? "black" : bw6 < 100 ? "rgb(192,192,192)" : {};
 };
+
+const playAudio = function () {
+  const rand = Math.random();
+  aud.forEach((audio) => (audio.volume = 0.2));
+  rand < 0.33 ? aud[0].play() : rand < 0.67 ? aud[1].play() : aud[2].play();
+};
+
 setInterval(pixelChange, 50);
