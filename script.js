@@ -156,7 +156,14 @@ closeModal.addEventListener("click", function (e) {
   modal.style.display = "none";
 });
 
-btnConfirm.addEventListener("click", function () {
+const confirmRandomExecute = function () {
+  displayCreatedHas("napitki", "AragoK", Math.floor(Math.random() * 5000));
+  clearModalValuesExit();
+  modal.style.display = "none";
+  playAudio();
+};
+
+const confirmExecute = function () {
   const ime = document.querySelector(".modal-ime").value;
   const cena = document.querySelector(".modal-cena").value;
   const tip = document
@@ -177,13 +184,13 @@ btnConfirm.addEventListener("click", function () {
     clearModalValuesExit();
     modal.style.display = "none";
   }
-});
-btnConfirmNonsense.addEventListener("click", function () {
-  displayCreatedHas("napitki", "AragoK", Math.floor(Math.random() * 5000));
-  clearModalValuesExit();
-  modal.style.display = "none";
-  playAudio();
-});
+};
+
+btnConfirm.addEventListener("click", confirmExecute);
+btnConfirm.addEventListener("touchend", confirmExecute);
+
+btnConfirmNonsense.addEventListener("click", confirmRandomExecute);
+btnConfirmNonsense.addEventListener("touchend", confirmRandomExecute);
 
 // Functions
 
