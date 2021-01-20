@@ -12,6 +12,7 @@ let rgbArray;
 let bw;
 let bw6;
 const aud = [new Audio("dik.mp3"), new Audio("san.mp3"), new Audio("bolz.mp3")];
+let curAudio = aud[0];
 const textNapitki = "napitki";
 const textGlavnoJelo = "glavno-jelo";
 const textBrekfest = "brekfest";
@@ -252,10 +253,17 @@ const pixelChange = function () {
 };
 
 const playAudio = function () {
+  curAudio.pause();
+  curAudio.currentTime = 0;
   if (allowAudio) {
     const rand = Math.random();
     aud.forEach((audio) => (audio.volume = 0.2));
-    rand < 0.33 ? aud[0].play() : rand < 0.67 ? aud[1].play() : aud[2].play();
+    rand < 0.33
+      ? (curAudio = aud[0])
+      : rand < 0.67
+      ? (curAudio = aud[1])
+      : (curAudio = aud[2]);
+    curAudio.play();
   }
 };
 
