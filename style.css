@@ -1,5 +1,6 @@
 body {
-  background-image: linear-gradient(to bottom right, rgb(255, 0, 0), blue);
+  background: linear-gradient(to bottom right, rgb(255, 0, 0), blue) no-repeat
+    fixed;
   margin: 0;
   border: 0;
   padding: 0;
@@ -164,10 +165,10 @@ section p {
 }
 @media all and (max-width: 400px) {
   body {
-    min-width: 256px;
+    min-width: 300px;
   }
   .container {
-    width: 256px;
+    width: 300px;
   }
   .title {
     font-size: 2rem;
