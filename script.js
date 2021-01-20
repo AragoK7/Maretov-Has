@@ -142,8 +142,10 @@ const modal = document.querySelector("#myModal");
 const closeModal = document.querySelector(".btn--close-modal");
 const btnConfirm = document.querySelector(".btn-confirm");
 const btnConfirmNonsense = document.querySelector(".btn-confirm-nonsense");
+const btnAudio = document.querySelector(".btn-audio--toggle");
 const body = document.querySelector("body");
 let madeobjects = 0;
+let allowAudio = true;
 
 // Event handlera
 
@@ -187,10 +189,20 @@ const confirmExecute = function () {
 };
 
 btnConfirm.addEventListener("click", confirmExecute);
-btnConfirm.addEventListener("touchend", confirmExecute);
+// btnConfirm.addEventListener("touchend", confirmExecute);
 
 btnConfirmNonsense.addEventListener("click", confirmRandomExecute);
-btnConfirmNonsense.addEventListener("touchend", confirmRandomExecute);
+// btnConfirmNonsense.addEventListener("touchend", confirmRandomExecute);
+
+btnAudio.addEventListener("click", function () {
+  if (allowAudio) {
+    allowAudio = false;
+    btnAudio.textContent = "Enable audio";
+  } else {
+    allowAudio = true;
+    btnAudio.textContent = "Disable audio";
+  }
+});
 
 // Functions
 
@@ -229,9 +241,9 @@ const rC = () => Math.floor(Math.random() * 256);
 const pixelChange = function () {
   rgbArray.forEach((num, i) => {
     if (num >= 1 && num <= 254) {
-      Math.random() < 0.5 ? (rgbArray[i] -= 2) : (rgbArray[i] += 2);
-    } else if (num <= 1) rgbArray[i] += 2;
-    else rgbArray[i] -= 2;
+      Math.random() < 0.5 ? (rgbArray[i] -= 1) : (rgbArray[i] += 1);
+    } else if (num <= 0) rgbArray[i] += 1;
+    else rgbArray[i] -= 1;
   });
   body.style.backgroundImage = `linear-gradient(to bottom right, rgb(${rgbArray[0]},${rgbArray[1]},${rgbArray[2]}), rgb(${rgbArray[3]},${rgbArray[4]},${rgbArray[5]}))`;
   bw = rgbArray.reduce((acc, num) => (acc += num), 0);
@@ -240,9 +252,11 @@ const pixelChange = function () {
 };
 
 const playAudio = function () {
-  const rand = Math.random();
-  aud.forEach((audio) => (audio.volume = 0.2));
-  rand < 0.33 ? aud[0].play() : rand < 0.67 ? aud[1].play() : aud[2].play();
+  if (allowAudio) {
+    const rand = Math.random();
+    aud.forEach((audio) => (audio.volume = 0.2));
+    rand < 0.33 ? aud[0].play() : rand < 0.67 ? aud[1].play() : aud[2].play();
+  }
 };
 
-setInterval(pixelChange, 50);
+setInterval(pixelChange, 30);
